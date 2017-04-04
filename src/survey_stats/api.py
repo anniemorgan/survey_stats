@@ -98,8 +98,10 @@ def fetch_questions(req):
             'topic': lambda x: x.head(1).get_values()[0],
             'subtopic': lambda x: x.get_values()[0],
             'question': lambda x: x.get_values()[0],
-            'response': lambda x: list(x.drop_duplicates())
+            'response': lambda x: list(x.drop_duplicates()),
+            'questionid': lambda x: x.get_values()[0]
         })
+        qn_res.columns = ['class','topic','question','response','questionid']
         # qn_res = qn_res['response'].unique()
         # dash = st.meta[dset].dash
         # logger.info(dash.columns)
